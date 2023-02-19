@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-const Form = () => {
+const Form = ({formSub}) => {
     const {
         register,
         handleSubmit,
@@ -11,7 +11,11 @@ const Form = () => {
     console.log(errors);
 
     const onSub = (data) => {
-        console.log(data);
+        data.id = Date.now();
+        data.fav = false;
+        formSub(data)
+        // console.log(data);
+        reset();
     }
     return (
         <div className="col-sm-4 shadow rounded g-5">

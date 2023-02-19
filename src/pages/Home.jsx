@@ -2,12 +2,17 @@ import React from 'react'
 import Contact from '../components/Contact'
 import Form from '../components/Form'
 
-const Home = () => {
+const Home = ({ formSub, contacts }) => {
+    console.log('contacts', contacts);
     return (
         <div className='container my-5'>
             <div className="row justify-content-sm-center my-3">
-                <Form />
-                <Contact />
+                <Form formSub={formSub} />
+            </div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+                {contacts.map((singleContact) => {
+                    return <Contact key={singleContact.id} contact={singleContact} />
+                })}
             </div>
         </div>
     )

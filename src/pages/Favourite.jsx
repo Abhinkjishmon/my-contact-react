@@ -18,6 +18,7 @@ const Favourite = ({ contacts, deleteContact, favToggle }) => {
               )
             )
           })}
+          {contacts.filter(single=>single.fav).length === 0 && <h2 className='text-danger'>No Favourite Contact</h2>}
         </div>
       </div>
     </>

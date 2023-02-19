@@ -13,6 +13,7 @@ const Home = ({ formSub, contacts, deleteContact, favToggle }) => {
                 {contacts.map((singleContact) => {
                     return <Contact key={singleContact.id} contact={singleContact} deleteContact={deleteContact} favToggle={favToggle}/>
                 })}
+                {contacts.length === 0 && <div>No Contact to Show</div>}
             </div>
         </div>
     )

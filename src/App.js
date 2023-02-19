@@ -24,12 +24,20 @@ function App() {
     });
     setContacts(newContact);
   }
+  const favToggle=(id)=>{
+    let updateContact = contacts.map((singleContact)=>{
+      return singleContact.id === id
+      ?{...singleContact,fav: !singleContact.fav}
+      : singleContact;
+    })
+    setContacts(updateContact);
+  }
   return (
     <Router>
       <Nav />
       <Routes>
-        <Route path='/' element={<Home formSub={formSub} contacts={contacts} deleteContact={deleteContact}/>}/>
-        <Route path='/favourite' element={<Favourite/>}/>
+        <Route path='/' element={<Home formSub={formSub} contacts={contacts} deleteContact={deleteContact} favToggle={favToggle}/>}/>
+        <Route path='/favourite' element={<Favourite contacts={contacts} deleteContact={deleteContact} favToggle={favToggle}/>}/>
         <Route path='*' element={<NotFound />}/>
       </Routes>
     </Router>
